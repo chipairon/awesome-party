@@ -1,1 +1,13 @@
-<h2>Hello World!</h2>
+<% unless signed_in? %>
+  <h3> Sign in first to explore the provider's API</h3>
+  <p>
+    <%= link_to "Sign in with OAuth 2 provider", user_omniauth_authorize_path(:doorkeeper), :class => "btn primary" %>
+  </p>
+<% else %>
+  <div>
+    <p>
+      You are logged in as <%= current_user.email %>
+    </p>
+  </div>
+<% end %>
+
