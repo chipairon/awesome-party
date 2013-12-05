@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Naranjas::Application.load_tasks
+AwesomeParty::Application.load_tasks
