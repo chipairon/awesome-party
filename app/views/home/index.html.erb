@@ -1,13 +1,21 @@
+<div class="page-header">
+  <h2>Welcome to Awesome Party</h2>
+  <h3>Be ready to organize the most amazing party ever!</h3>
+</div>
+
 <% unless signed_in? %>
-  <h3> Sign in first to explore the provider's API</h3>
+  <h3> Sign in to start planning</h3>
   <p>
-    <%= link_to "Sign in with OAuth 2 provider", user_omniauth_authorize_path(:doorkeeper), :class => "btn primary" %>
+    <%= link_to "Sign in", user_omniauth_authorize_path(:doorkeeper), :class => "btn btn-primary" %>
   </p>
 <% else %>
   <div>
     <p>
       You are logged in as <%= current_user.email %>
     </p>
+    <p><%= link_to "See your parties", parties_path, class: "btn btn-primary" %></p>
   </div>
+  
 <% end %>
+
 

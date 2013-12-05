@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email
-  # attr_accessible :title, :body
+
+  has_many :parties
 
   def self.find_or_create_for_doorkeeper_oauth(oauth_data)
     User.find_or_initialize_by_doorkeeper_uid(oauth_data.uid).tap do |user|
