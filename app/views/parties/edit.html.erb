@@ -5,9 +5,21 @@
 
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">Attendants</h3>
+    <h3 class="panel-title">
+      <%= link_to "#{ENV["ATTENDANTS_URL"]}/by_event/#{@party.permalink}" do %>
+        Attendants &nbsp;
+        <span class="glyphicon glyphicon-export"></span>
+      <% end %>
+    </h3>
   </div>
   <div class="panel-body">
+    <% if @attendants and @attendants.any? %>
+      <% @attendants.each do |att| %>
+        <div>
+          <h5><%= att["full_name"] %></h5>
+        </div>
+      <% end %>
+    <% end %>
 
   </div>
 </div>
@@ -17,7 +29,14 @@
     <h3 class="panel-title">Menu</h3>
   </div>
   <div class="panel-body">
-
+    <% if @menu and @menu.keys.any? %>
+      <% @menu.keys.each do |key| %>
+        <div>
+          <h3><%= key.capitalize %></h3>
+          <h4><%= @menu[key] %></h4>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

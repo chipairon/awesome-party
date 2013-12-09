@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.15'
 
+gem 'rest-client'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'

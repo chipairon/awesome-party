@@ -4,7 +4,7 @@ class PartiesController < ApplicationController
   # GET /parties
   # GET /parties.json
   def index
-    @parties = Party.all
+    @parties = Party.where(user_id: current_user)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,12 +38,15 @@ class PartiesController < ApplicationController
   # GET /parties/1/edit
   def edit
     @party = Party.find(params[:id])
+    @attendants = AttendantsService.get_for_event(@party.permalink, current_user)
+    @menu = MenusService.get_for_user(current_user)
   end
 
   # POST /parties
   # POST /parties.json
   def create
     @party = Party.new(params[:party])
+    @party.owner = current_user
 
     respond_to do |format|
       if @party.save
